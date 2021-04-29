@@ -1,0 +1,52 @@
+version: 2
+registries:
+  maven-repository-beekeeper-internal-repository-s3-eu-central-1-a:
+    type: maven-repository
+    url: http://beekeeper-internal-repository.s3.eu-central-1.amazonaws.com/maven2/release
+    username: AKIAYG4VANM6BNTAQTMN
+    password: "${{secrets.MAVEN_REPOSITORY_BEEKEEPER_INTERNAL_REPOSITORY_S3_EU_CENTRAL_1_A_PASSWORD}}"
+
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  reviewers:
+  - warden
+  - olamy
+  ignore:
+  - dependency-name: jcl-over-slf4j
+    versions:
+    - ">= 0"
+  - dependency-name: log4j-over-slf4j
+    versions:
+    - ">= 0"
+  - dependency-name: org.jenkins-ci.main:jenkins-bom
+    versions:
+    - ">= 0"
+  - dependency-name: org.jenkins-ci.main:jenkins-core
+    versions:
+    - ">= 0"
+  - dependency-name: org.jenkins-ci.main:jenkins-war
+    versions:
+    - ">= 0"
+  - dependency-name: slf4j-api
+    versions:
+    - ">= 0"
+  - dependency-name: slf4j-jdk14
+    versions:
+    - ">= 0"
+  - dependency-name: org.jenkins-ci.plugins:p4
+    versions:
+    - 1.11.1
+    - 1.11.2
+  - dependency-name: org.jenkins-ci.plugins:plugin
+    versions:
+    - "4.15"
+  - dependency-name: org.jenkins-ci.plugins:jackson2-api
+    versions:
+    - 2.12.0
+  registries:
+  - maven-repository-beekeeper-internal-repository-s3-eu-central-1-a
